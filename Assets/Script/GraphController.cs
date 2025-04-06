@@ -5,56 +5,58 @@ using UnityEngine.UI;
 public class GraphController : MonoBehaviour
 {
     [Header("프리팹")]
-    public GameObject linePrefab;       // LineRenderer가 붙은 프리팹
-    public GameObject pointPrefab;      // 원형 점 프리팹
+    public GameObject linePrefab;
+    public GameObject pointPrefab;
 
     [Header("그래프 영역")]
     public RectTransform graphContainer;
 
     [Header("그래프 설정")]
-    public float xSpacing = 10f;        // 시간 단위당 x 간격
-    public float yScale = 1f;           // 주가 값을 y 위치로 변환할 때 스케일
+    public float xSpacing = 10f;
+    public float yScale = 10f;
 
-    private List<Vector2> graphPoints = new List<Vector2>();
-    private LineRenderer lineRenderer;
-    private float currentTime = 0f;
+    private Dictionary<string, LineRenderer> lineRenderers = new();
+    private Dictionary<string, List<Vector2>> graphPoints = new();
 
-    void Start()
+    public void AddDataPoint(string stockName, float time, float price, Color lineColor, Color pointColor)
     {
-        // 라인 프리팹 인스턴스 생성
-        GameObject lineObj = Instantiate(linePrefab, graphContainer);
-        lineRenderer = lineObj.GetComponent<LineRenderer>();
-        lineRenderer.positionCount = 0;
-    }
-
-    public void AddDataPoint(float price, Color lineColor, Color pointColor)
-    {
-        float x = currentTime * xSpacing;
-        float y = price * yScale;
-        Vector2 newPoint = new Vector2(x, y);
-        graphPoints.Add(newPoint);
-
-        // LineRenderer 갱신
-        lineRenderer.positionCount = graphPoints.Count;
-        for (int i = 0; i < graphPoints.Count; i++)
+        if (!lineRenderers.ContainsKey(stockName))
         {
-            lineRenderer.SetPosition(i, graphPoints[i]);
+            // 새로운 라인 추가
+            GameObject lineObj = Instantiate(linePrefab, graphContainer);
+            LineRenderer lr = lineObj.GetComponent<LineRenderer>();
+            lr.positionCount = 0;
+            lr.startColor = lineColor;
+            lr.endColor = lineColor;
+
+            lineRenderers[stockName] = lr;
+            graphPoints[stockName] = new List<Vector2>();
         }
 
-        // 색상 적용
-        lineRenderer.startColor = lineColor;
-        lineRenderer.endColor = lineColor;
+        float x = -300.0f;
+        float y = -100.0f;
+        x += (time/10.0f) * xSpacing;
+        y += price * yScale;
+        Vector2 newPoint = new Vector2(x, y);
+        graphPoints[stockName].Add(newPoint);
 
-        // 점 생성 + 색상 지정
+        // 선 연결
+        LineRenderer lineRenderer = lineRenderers[stockName];
+        lineRenderer.positionCount = graphPoints[stockName].Count;
+        for (int i = 0; i < graphPoints[stockName].Count; i++)
+        {
+            lineRenderer.SetPosition(i, graphPoints[stockName][i]);
+        }
+
+        // 점 생성
         GameObject point = Instantiate(pointPrefab, graphContainer);
         RectTransform rt = point.GetComponent<RectTransform>();
         rt.anchoredPosition = newPoint;
 
-        Image img = point.GetComponent<Image>();
+        UnityEngine.UI.Image img = point.GetComponent<UnityEngine.UI.Image>();
         if (img != null)
+        {
             img.color = pointColor;
-
-        currentTime += 1f;
+        }
     }
-
 }

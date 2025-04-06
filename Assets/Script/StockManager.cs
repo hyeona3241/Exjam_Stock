@@ -17,8 +17,9 @@ public class StockManager : MonoBehaviour
         foreach (var stock in allStocks)
         {
             //graphController.AddPoint(stock.stockName, stock.currentPrice, stock.lineColor);
-            // 예: StockData에서 매초 가격을 받아서 전달
-            graphController.AddDataPoint(stock.currentPrice, stock.lineColor, stock.lineColor);
+            graphController.AddDataPoint(stock.stockName, marketTimer.ElapsedTime, stock.currentPrice, stock.lineColor, stock.lineColor);
+
+
 
         }
     }

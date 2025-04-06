@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Diagnostics;
 
 public class MarketTimer : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class MarketTimer : MonoBehaviour
     public float elapsedTime = 0f;
     private float lastFiveMinMark = 0f;
     private float lastTenMinMark = 0f;
+    public float ElapsedTime => elapsedTime;
+
 
     [Header("일시정지 상태")]
     public bool isPaused = false;
