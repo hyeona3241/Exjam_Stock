@@ -45,10 +45,11 @@ public class MarketTimer : MonoBehaviour
             lastFiveMinMark = elapsedTime;
         }
 
-        if (elapsedTime - lastTenMinMark >= 600f)
+        if (elapsedTime - lastTenMinMark >= 10f)
         {
             OnTenMinutesPassed?.Invoke();
             lastTenMinMark = elapsedTime;
+            UnityEngine.Debug.Log("[CSV 저장] 현재 주식 가격을 저장했습니다.");
         }
     }
 
