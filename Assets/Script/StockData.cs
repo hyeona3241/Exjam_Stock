@@ -47,6 +47,11 @@ public class StockData : MonoBehaviour
         float change = currentPrice * fluctuationRate * randomFactor;
         currentPrice += change;
 
+        if (currentPrice < 0f)
+        {
+            currentPrice = 0f;
+        }
+
         UpdatePriceText();
     }
 
