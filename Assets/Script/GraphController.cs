@@ -29,7 +29,7 @@ public class GraphController : MonoBehaviour
         // 새 좌표 계산 (Pivot이 (0,0) 기준)
         float x = -300f;
         float y = -100f;
-        x += xStartOffset + (time / 60f) * xSpacing;
+        x += xStartOffset + (time / 120f) * xSpacing;
         y += yStartOffset + (price * 10f) * yScale;
         Vector2 newPoint = new Vector2(x, y);
         var points = graphPoints[stockName];
@@ -52,22 +52,32 @@ public class GraphController : MonoBehaviour
         if (img != null)
             img.color = pointColor;
 
-        // 그래프 영역(Content) 크기 자동 확장
+        // 1) 뷰포트 크기 가져오기
+        float vpW = scrollRect.viewport.rect.width;
+        float vpH = scrollRect.viewport.rect.height;
+
+        // 2) 콘텐츠 확장: 새 점 위치 + 뷰포트 크기만큼 확보
         Vector2 updatedSize = graphContainer.sizeDelta;
-        if (newPoint.x + 100f > updatedSize.x)
-            updatedSize.x = newPoint.x + 100f;
-        if (newPoint.y + 100f > updatedSize.y)
-            updatedSize.y = newPoint.y + 100f;
+        if (newPoint.x + vpW > updatedSize.x)
+            updatedSize.x = newPoint.x + vpW;
+        if (newPoint.y + vpH > updatedSize.y)
+            updatedSize.y = newPoint.y + vpH;
         graphContainer.sizeDelta = updatedSize;
+
 
         //현재 스크롤 위치를 유지시키기 위한 고정 (자동스크롤 안 쓸 경우)
         float currentX = scrollRect.horizontalNormalizedPosition;
         float currentY = scrollRect.verticalNormalizedPosition;
 
+
+        // 콘텐츠 변경(크기 확장) 후 강제로 오른쪽·위쪽 끝으로 스크롤
+        Canvas.ForceUpdateCanvases();
+        //scrollRect.horizontalNormalizedPosition = 1f;  // 오른쪽 끝
+        //scrollRect.verticalNormalizedPosition = 1f;  // 위쪽 끝
+
         // 이 코드는 영역 확장 이후에 실행되어야 함
         scrollRect.horizontalNormalizedPosition = currentX;
         scrollRect.verticalNormalizedPosition = currentY;
-
     }
 
 

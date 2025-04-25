@@ -49,7 +49,7 @@ public class MarketTimer : MonoBehaviour
         UpdateTimerUI();
 
         // 1분 체크
-        if (elapsedTime - lastFiveMinMark >= 60f)
+        if (elapsedTime - lastFiveMinMark >= 120f)
         {
             OnFiveMinutesPassed?.Invoke();
             lastFiveMinMark = elapsedTime;
@@ -73,7 +73,10 @@ public class MarketTimer : MonoBehaviour
     void UpdateTimerUI()
     {
         TimeSpan time = TimeSpan.FromSeconds(elapsedTime);
-        timerText.text = string.Format("{0:D2}:{1:D2}", time.Minutes, time.Seconds);
+        int totalMin = (int)time.TotalMinutes;    // 누적 분
+        int seconds = time.Seconds;
+
+        timerText.text = string.Format("{0:D2}:{1:D2}", totalMin, seconds);
     }
 
     public void Pause()
