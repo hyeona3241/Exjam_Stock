@@ -45,18 +45,13 @@ public class StockData : MonoBehaviour
     {
         float randomFactor = UnityEngine.Random.Range(-1f, 1f);
         float change = currentPrice * fluctuationRate * randomFactor;
-        currentPrice += change;
-
-        if (currentPrice < 0f)
-        {
-            currentPrice = 0f;
-        }
+        currentPrice = Mathf.Max(0f, currentPrice + change);  // 0 아래로 내려가지 않도록 클램프
 
         UpdatePriceText();
     }
 
     void UpdatePriceText()
     {
-        priceText.text = currentPrice.ToString("F2") + " ₩";
+        priceText.text = currentPrice.ToString("F2");
     }
 }

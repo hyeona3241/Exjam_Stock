@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stockName: EUNJOO COMPANY
-  initialPrice: 100
+  initialPrice: 10
   fluctuationRate: 0.05
   currentPrice: 0
   lineColor: {r: 0.028301716, g: 0.9617442, b: 1, a: 1}
@@ -1242,7 +1242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stockName: "Y.H \uBDF0\uD2F0"
-  initialPrice: 100
+  initialPrice: 10
   fluctuationRate: 0.05
   currentPrice: 0
   lineColor: {r: 0.91372555, g: 0.6431373, b: 0.62352943, a: 1}
@@ -1722,7 +1722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stockName: "\uD604\uC544 \uC804\uC790"
-  initialPrice: 100
+  initialPrice: 10
   fluctuationRate: 0.05
   currentPrice: 0
   lineColor: {r: 0.16707003, g: 0.45394707, b: 0.93207544, a: 1}
@@ -1987,7 +1987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stockName: "\uC131\uD658 \uAC74\uC124"
-  initialPrice: 100
+  initialPrice: 10
   fluctuationRate: 0.05
   currentPrice: 0
   lineColor: {r: 0.09411766, g: 0.17254902, b: 0.27450982, a: 1}
@@ -2344,7 +2344,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2119508119}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99967337
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2511,7 +2511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 1115542323}
   pausedPanel: {fileID: 1966139721}
-  elapsedTime: 0
+  tenMinuteAlertClip: {fileID: 8300000, guid: a1911b442f4d4574d8edf71470ba62df, type: 3}
   isPaused: 0
 --- !u!1 &914698775
 GameObject:
@@ -3098,7 +3098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stockName: N.Y. ENT
-  initialPrice: 100
+  initialPrice: 10
   fluctuationRate: 0.05
   currentPrice: 0
   lineColor: {r: 1, g: 0.8705883, b: 0.22352943, a: 1}
@@ -3152,7 +3152,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000034589764, y: -0.000030517578}
+  m_AnchoredPosition: {x: -0.00004107497, y: -0.000030517578}
   m_SizeDelta: {x: -1, y: -2}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &1389674308
@@ -3666,7 +3666,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2103775306}
   m_HandleRect: {fileID: 2103775305}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3988,7 +3988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stockName: "\uD604\uBBFC \uC0DD\uBA85"
-  initialPrice: 100
+  initialPrice: 10
   fluctuationRate: 0.05
   currentPrice: 0
   lineColor: {r: 0.49627686, g: 1, b: 0, a: 1}
@@ -4115,7 +4115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stockName: "MS \uC2DD\uD488"
-  initialPrice: 100
+  initialPrice: 10
   fluctuationRate: 0.05
   currentPrice: 0
   lineColor: {r: 0.06666667, g: 0.32941177, b: 0.18431373, a: 1}
