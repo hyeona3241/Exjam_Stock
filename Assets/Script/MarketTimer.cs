@@ -39,13 +39,13 @@ public class MarketTimer : MonoBehaviour
         UpdateTimerUI();
 
         //5Ка = 300f
-        if (elapsedTime - lastFiveMinMark >= 10f)
+        if (elapsedTime - lastFiveMinMark >= 300f)
         {
             OnFiveMinutesPassed?.Invoke();
             lastFiveMinMark = elapsedTime;
         }
 
-        if (elapsedTime - lastTenMinMark >= 10f)
+        if (elapsedTime - lastTenMinMark >= 600f)
         {
             OnTenMinutesPassed?.Invoke();
             lastTenMinMark = elapsedTime;

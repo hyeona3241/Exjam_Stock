@@ -29,7 +29,7 @@ public class GraphController : MonoBehaviour
         // 새 좌표 계산 (Pivot이 (0,0) 기준)
         float x = -300f;
         float y = -100f;
-        x += xStartOffset + (time / 10f) * xSpacing;
+        x += xStartOffset + (time / 300f) * xSpacing;
         y += yStartOffset + price * yScale;
         Vector2 newPoint = new Vector2(x, y);
         var points = graphPoints[stockName];
